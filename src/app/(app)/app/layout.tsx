@@ -1,17 +1,17 @@
 "use client";
 
+import Header from "@/components/Header";
+import SearchModal from "@/components/SearchModal";
+import { AppSidebar } from "@/components/Sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import type React from "react";
 
 import { useState } from "react";
-import Header from "./Header";
-import SearchModal from "./SearchModal";
-import { AppSidebar } from "./Sidebar";
-import { SidebarProvider } from "./ui/sidebar";
 
-type LayoutProps = {
+type AppLayoutProps = {
   children: React.ReactNode;
 };
-const Layout = ({ children }: LayoutProps) => {
+const AppLayout = ({ children }: AppLayoutProps) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
@@ -41,4 +41,4 @@ const Layout = ({ children }: LayoutProps) => {
   );
 };
 
-export default Layout;
+export default AppLayout;
