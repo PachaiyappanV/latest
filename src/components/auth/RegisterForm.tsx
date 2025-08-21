@@ -1,7 +1,4 @@
 "use client";
-
-import GoogleIcon from "@/icons/google.svg";
-import GitHubIcon from "@/icons/github.svg";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -25,11 +22,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import Link from "next/link";
+import SocialAuth from "./SocialAuth";
 
 const formSchema = z
   .object({
     fullName: z.string().min(2, "Full name is required"),
-    email: z.string().email("Invalid email address"),
+    email: z.email("Invalid email address"),
     phone: z.string().min(10, "Enter a valid phone number"),
     countryCode: z.string().min(1, "Select a country code"),
     businessName: z.string().min(2, "Business name is required"),
@@ -72,9 +71,9 @@ export default function RegistrationForm() {
       {/* Top login link */}
       <div className="text-right  text-sm mb-6">
         Already have an account?{" "}
-        <a href="#" className="text-blue-600 hover:underline">
+        <Link href="/login" className="text-blue-600 hover:underline">
           Log in
-        </a>
+        </Link>
       </div>
 
       {/* Form */}
@@ -264,7 +263,7 @@ export default function RegistrationForm() {
             {/* Submit */}
             <Button
               type="submit"
-              className="w-full cursor-pointer bg-green-600 hover:bg-green-700 text-white"
+              className="w-full cursor-pointer bg-[#3f8e43] hover:bg-green-700 text-white"
             >
               START FREE TRIAL
             </Button>
@@ -272,19 +271,7 @@ export default function RegistrationForm() {
               No credit card required
             </p>
 
-            {/* Social login */}
-            <div className="grid grid-cols-2 gap-4 pt-2">
-              <div className="w-full border-blue-400 border-2 rounded-md flex items-center justify-center gap-2 py-2 cursor-pointer ">
-                <GoogleIcon />
-
-                <span>Google</span>
-              </div>
-
-              <div className="w-full border-blue-400 border-2 rounded-md flex items-center justify-center gap-2 py-2 cursor-pointer ">
-                <GitHubIcon />
-                <span>GitHub</span>
-              </div>
-            </div>
+            <SocialAuth />
           </form>
         </Form>
       </div>

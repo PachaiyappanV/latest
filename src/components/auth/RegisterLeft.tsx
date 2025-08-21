@@ -1,13 +1,6 @@
 import { CircleCheck, Gift, Megaphone } from "lucide-react";
 import WhatsappIcon from "@/icons/whatsapp.svg";
 export default function RegisterLeft() {
-  // Left branding panel — matches the uploaded design colors & layout
-  // Palette extracted from the image:
-  //   bg tint: #ebf3ea
-  //   primary:  #3f8e43
-  //   soft gray: #ccd1ce
-  //   subtle bg: #f4f7f4
-  //   accent gray-green: #97aa99
   return (
     <aside className="min-h-screen max-lg:hidden w-full flex items-center justify-center bg-[#ebf3ea] p-4 ">
       <div className="w-full rounded-2xl bg-white p-6 shadow-[0_8px_24px_rgba(16,24,40,.06)] ring-1 ring-[#f4f7f4] md:p-8">
