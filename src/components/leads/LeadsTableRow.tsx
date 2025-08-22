@@ -1,12 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import {
-  EllipsisVertical,
-  Eye,
-  MessageSquareText,
-  Pencil,
-  Trash2,
-} from "lucide-react";
+import { Eye, MessageSquareText, Pencil, Trash2 } from "lucide-react";
 
 type Props = {
   lead: {
@@ -19,7 +13,7 @@ type Props = {
   index: number;
 };
 
-const LeadsTableRow = ({ lead, index }: Props) => {
+const LeadsTableRow = ({ lead }: Props) => {
   return (
     <tr>
       <td className="px-6 py-4">

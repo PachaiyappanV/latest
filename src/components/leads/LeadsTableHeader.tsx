@@ -1,6 +1,5 @@
 import { leadsTableHeaders } from "@/constants";
-import { SlidersVertical } from "lucide-react";
-
+import LeadsFieldsDropdown from "./LeadsFieldsDropdown";
 const LeadsTableHeader = () => {
   return (
     <thead className="bg-blue-10 border-b border-gray-200">
@@ -20,7 +19,7 @@ const LeadsTableHeader = () => {
               </div>
             ) : id === 6 ? (
               <span className="flex items-center gap-1">
-                <SlidersVertical className="w-4 h-4" />
+                <LeadsFieldsDropdown />
               </span>
             ) : (
               header
@@ -31,5 +30,4 @@ const LeadsTableHeader = () => {
     </thead>
   );
 };
-
 export default LeadsTableHeader;

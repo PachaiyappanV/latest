@@ -16,6 +16,7 @@ import {
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { navMain, navSecondary } from "@/constants";
+import Link from "next/link";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   // Note: I'm using state to show active item.
@@ -55,34 +56,35 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarGroupContent className="w-full">
               <SidebarMenu className="w-full gap-[6px] bg-blue-10 py-1">
                 {navMain.map((item) => (
-                  <div
-                    onClick={() => {
-                      switch (item.title) {
-                        case "Chat":
-                          setOpen(true);
-                          break;
-                        case "Settings":
-                          setOpen(true);
-                          break;
-                        default:
-                          setOpen(false);
-                          break;
-                      }
-                      setActiveMain(item.title);
-                    }}
-                    key={item.title}
-                    className={`${
-                      activeMain === item.title
-                        ? " bg-blue-20  text-blue-700 hover:bg-transparent"
-                        : ""
-                    } flex hover:bg-blue-100 [&>svg]:w-[20px] [&>svg]:h-[20px] gap-1 pt-[8px] pb-[5px] flex-col items-center  w-[90%] mx-auto cursor-pointer rounded-md`}
-                  >
-                    <item.icon />
+                  <Link key={item.title} href={item.link || "#"}>
+                    <div
+                      onClick={() => {
+                        switch (item.title) {
+                          case "Chat":
+                            setOpen(true);
+                            break;
+                          case "Settings":
+                            setOpen(true);
+                            break;
+                          default:
+                            setOpen(false);
+                            break;
+                        }
+                        setActiveMain(item.title);
+                      }}
+                      className={`${
+                        activeMain === item.title
+                          ? " bg-blue-20  text-blue-700 hover:bg-transparent"
+                          : ""
+                      } flex hover:bg-blue-100 [&>svg]:w-[20px] [&>svg]:h-[20px] gap-1 pt-[8px] pb-[5px] flex-col items-center  w-[90%] mx-auto cursor-pointer rounded-md`}
+                    >
+                      <item.icon />
 
-                    <p className="text-[10px] text-center break-words">
-                      {item.title}
-                    </p>
-                  </div>
+                      <p className="text-[10px] text-center break-words">
+                        {item.title}
+                      </p>
+                    </div>
+                  </Link>
                 ))}
               </SidebarMenu>
             </SidebarGroupContent>

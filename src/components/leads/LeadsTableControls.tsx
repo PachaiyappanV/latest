@@ -1,13 +1,7 @@
-import {
-  Filter,
-  RefreshCw,
-  Layers,
-  ArrowDownWideNarrow,
-  Settings,
-} from "lucide-react";
+import { Filter, RefreshCw, Layers, ArrowDownWideNarrow } from "lucide-react";
 import { Button } from "../ui/button";
 import SearchBar from "../SearchBar";
-import { LeadsFormModal } from ".";
+import { AddLeadsDropdown, LeadsSettingsDropdown } from ".";
 
 const LeadsTableControls = () => {
   return (
@@ -29,10 +23,9 @@ const LeadsTableControls = () => {
           <Filter />
           Filters
         </Button>
-        <LeadsFormModal />
-        <Button variant="outline" className="cursor-pointer">
-          <Settings />
-        </Button>
+        <AddLeadsDropdown />
+        <LeadsSettingsDropdown />
+
         <Button variant="outline" className="cursor-pointer">
           <RefreshCw />
         </Button>
@@ -40,5 +33,4 @@ const LeadsTableControls = () => {
     </div>
   );
 };
-
 export default LeadsTableControls;

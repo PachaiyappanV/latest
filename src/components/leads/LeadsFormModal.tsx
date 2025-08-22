@@ -1,5 +1,4 @@
 "use client";
-
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,7 +7,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import {
   Form,
@@ -28,9 +26,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Plus } from "lucide-react";
 
-// ✅ Zod Schema
 const leadSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
@@ -45,7 +41,13 @@ const leadSchema = z.object({
 
 type LeadFormValues = z.infer<typeof leadSchema>;
 
-const LeadsFormModal = () => {
+const LeadsFormModal = ({
+  open,
+  onOpenChange,
+}: {
+  open: boolean;
+  onOpenChange: (v: boolean) => void;
+}) => {
   const form = useForm<LeadFormValues>({
     resolver: zodResolver(leadSchema),
     defaultValues: {
@@ -67,14 +69,7 @@ const LeadsFormModal = () => {
   };
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button className="bg-blue-600 hover:bg-blue-700 cursor-pointer">
-          <Plus />
-          Add Leads
-        </Button>
-      </DialogTrigger>
-
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
           <DialogTitle>Add New Lead</DialogTitle>
@@ -83,7 +78,6 @@ const LeadsFormModal = () => {
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
-              {/* First Name */}
               <FormField
                 control={form.control}
                 name="firstName"
@@ -97,7 +91,7 @@ const LeadsFormModal = () => {
                   </FormItem>
                 )}
               />
-              {/* Last Name */}
+
               <FormField
                 control={form.control}
                 name="lastName"
@@ -113,7 +107,6 @@ const LeadsFormModal = () => {
               />
             </div>
 
-            {/* Email */}
             <FormField
               control={form.control}
               name="email"
@@ -128,7 +121,6 @@ const LeadsFormModal = () => {
               )}
             />
 
-            {/* Phone */}
             <FormField
               control={form.control}
               name="phone"
@@ -143,7 +135,6 @@ const LeadsFormModal = () => {
               )}
             />
 
-            {/* Company */}
             <FormField
               control={form.control}
               name="company"
@@ -158,7 +149,6 @@ const LeadsFormModal = () => {
               )}
             />
 
-            {/* Value */}
             <FormField
               control={form.control}
               name="value"
@@ -179,7 +169,6 @@ const LeadsFormModal = () => {
             />
 
             <div className="grid grid-cols-2 gap-4">
-              {/* Source */}
               <FormField
                 control={form.control}
                 name="source"
@@ -206,7 +195,6 @@ const LeadsFormModal = () => {
                 )}
               />
 
-              {/* Status */}
               <FormField
                 control={form.control}
                 name="status"
@@ -235,7 +223,6 @@ const LeadsFormModal = () => {
               />
             </div>
 
-            {/* Notes */}
             <FormField
               control={form.control}
               name="notes"
@@ -254,7 +241,6 @@ const LeadsFormModal = () => {
               )}
             />
 
-            {/* Submit */}
             <div className="flex justify-end gap-3 pt-4">
               <Button
                 type="submit"
@@ -269,5 +255,4 @@ const LeadsFormModal = () => {
     </Dialog>
   );
 };
-
 export default LeadsFormModal;
