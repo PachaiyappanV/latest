@@ -36,9 +36,10 @@ export const navMain = [
     isActive: false,
   },
   {
-    title: "Contacts",
+    title: "Leads",
     icon: ContactRound,
     isActive: false,
+    link: "/app/leads",
   },
   {
     title: "CTWA",
@@ -133,3 +134,58 @@ export const navSecondary = {
     },
   ],
 };
+
+export const leads = [
+  {
+    name: "Olivia Rhye",
+    email: "rhye@empiremark.io",
+    phone: "+1 (218) 699-3149",
+    source: "Facebook",
+    assigned: "/pic2.png",
+  },
+  {
+    name: "Phoenix Baker",
+    email: "baker@witventures.com",
+    phone: "+1 (326) 507-6709",
+    source: "Facebook",
+    assigned: "/pic3.png",
+  },
+  {
+    name: "Lana Steiner",
+    email: "steiner@factorfour.com",
+    phone: "+1 (208) 608-6292",
+    source: "LinkedIn",
+    assigned: "/pic4.png",
+  },
+  {
+    name: "Demi Wilkinson",
+    email: "wilkinson@marketsq.com",
+    phone: "+1 (317) 234-8462",
+    source: "Dribbble",
+    assigned: "/pic5.png",
+  },
+  {
+    name: "Candice Wu",
+    email: "candice@voicefirm.com",
+    phone: "+1 (680) 539-0761",
+    source: "LinkedIn",
+    assigned: "/pic6.png",
+  },
+  {
+    name: "Natali Craig",
+    email: "natali@maxusmedia.net",
+    phone: "+1 (540) 683-1441",
+    assigned: "/pic7.png",
+    source: "UpWork",
+  },
+];
+
+export const leadsTableHeaders = [
+  "Name",
+  "Phone",
+  "Email",
+  "Source",
+  "Assigned",
+  "Actions",
+  "",
+];

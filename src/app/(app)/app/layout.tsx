@@ -34,7 +34,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
         </SidebarProvider>
 
         {/* Main content area */}
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 p-5">{children}</main>
       </div>
       <SearchModal open={isSearchOpen} onOpenChange={setIsSearchOpen} />
     </div>
