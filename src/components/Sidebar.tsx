@@ -53,7 +53,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarContent>
           <SidebarGroup className=" p-0 ">
             <SidebarGroupContent className="w-full">
-              <SidebarMenu className="w-full gap-[6px]">
+              <SidebarMenu className="w-full gap-[6px] bg-blue-10 py-1">
                 {navMain.map((item) => (
                   <div
                     onClick={() => {
@@ -71,11 +71,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                       setActiveMain(item.title);
                     }}
                     key={item.title}
-                    className={`flex hover:bg-blue-100 [&>svg]:w-[20px] [&>svg]:h-[20px] gap-1${
+                    className={`${
                       activeMain === item.title
-                        ? " bg-blue-20 border-l-3 rounded-l border-blue-700 text-blue-700"
+                        ? " bg-blue-20  text-blue-700 hover:bg-transparent"
                         : ""
-                    }  pt-[8px] pb-[5px] flex-col items-center  w-full cursor-pointer`}
+                    } flex hover:bg-blue-100 [&>svg]:w-[20px] [&>svg]:h-[20px] gap-1 pt-[8px] pb-[5px] flex-col items-center  w-[90%] mx-auto cursor-pointer rounded-md`}
                   >
                     <item.icon />
 
