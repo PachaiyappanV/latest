@@ -22,7 +22,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
           style={
             {
               "--sidebar-width": "300px",
-              "--sidebar-width-icon": "80px",
+              "--sidebar-width-icon": "70px",
               width: "auto",
               position: "relative",
               maxHeight: "100%",

@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { Settings, UsersRound } from "lucide-react";
-
 import {
   Sidebar,
   SidebarContent,
@@ -41,53 +40,46 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar
       collapsible="icon"
-      className="overflow-hidden min-h-full transition-none  max-h-full absolute *:data-[sidebar=sidebar]:flex-row "
+      className="min-h-full max-h-full absolute *:data-[sidebar=sidebar]:flex-row "
       {...props}
     >
       {/* This is the first sidebar */}
       {/* We disable collapsible and adjust width to icon. */}
       {/* This will make the sidebar appear as icons. */}
-      <Sidebar collapsible="none" className="min-w-20 max-w-20 bg-blue-10">
+      <Sidebar
+        collapsible="none"
+        className="w-[calc(var(--sidebar-width-icon))]"
+      >
         <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupContent className="px-1.5 md:px-0">
-              <SidebarMenu className="gap-2   items-center">
+          <SidebarGroup className=" p-0 ">
+            <SidebarGroupContent className="w-full">
+              <SidebarMenu className="w-full gap-[6px]">
                 {navMain.map((item) => (
-                  <div key={item.title} className="flex flex-col items-center ">
-                    <SidebarMenuItem
-                      className={cn(
-                        "rounded-md pr-1 hover:bg-blue-500",
-                        activeMain === item.title && "bg-blue-500",
-                        open && "pr-0"
-                      )}
-                    >
-                      <SidebarMenuButton
-                        tooltip={{
-                          children: item.title,
-                          hidden: false,
-                        }}
-                        onClick={() => {
-                          switch (item.title) {
-                            case "Chat":
-                              setOpen(true);
-                              break;
-                            case "Settings":
-                              setOpen(true);
-                              break;
-                            default:
-                              setOpen(false);
-                              break;
-                          }
-                          setActiveMain(item.title);
-                        }}
-                        className={
-                          "px-2.5 md:px-2 bg-transparent hover:bg-transparent  active:bg-transparent [&>svg]:w-[21px] [&>svg]:h-[21px]"
-                        }
-                      >
-                        <item.icon />
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <p className="text-[12px] text-center break-words">
+                  <div
+                    onClick={() => {
+                      switch (item.title) {
+                        case "Chat":
+                          setOpen(true);
+                          break;
+                        case "Settings":
+                          setOpen(true);
+                          break;
+                        default:
+                          setOpen(false);
+                          break;
+                      }
+                      setActiveMain(item.title);
+                    }}
+                    key={item.title}
+                    className={`flex hover:bg-blue-100 [&>svg]:w-[20px] [&>svg]:h-[20px] gap-1${
+                      activeMain === item.title
+                        ? " bg-blue-20 border-l-3 rounded-l border-blue-700 text-blue-700"
+                        : ""
+                    }  pt-[8px] pb-[5px] flex-col items-center  w-full cursor-pointer`}
+                  >
+                    <item.icon />
+
+                    <p className="text-[10px] text-center break-words">
                       {item.title}
                     </p>
                   </div>
@@ -100,17 +92,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
       {/* This is the second sidebar */}
       {/* We disable collapsible and let it fill remaining space */}
-
-      {activeMain === "Chat" && (
-        <Sidebar
-          collapsible="none"
-          className="hidden bg-blue-20 md:flex-1 md:flex rounded-tl-md border-r"
-        >
+      <Sidebar collapsible="none" className="bg-blue-20 flex-1">
+        {activeMain === "Chat" && (
           <SidebarContent>
             <SidebarGroup>
               <SidebarGroupLabel className="text-lg pt-1 -ml-2 gap-[6px] [&>svg]:w-5 [&>svg]:h-5 flex items-center  text-gray-800 font-semibold mb-3">
                 <UsersRound />
-                Team Inbox
+                <p className="text-nowrap">Team Inbox</p>
               </SidebarGroupLabel>
               <SidebarGroupContent>
                 <SidebarMenu>
@@ -134,14 +122,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               </SidebarGroupContent>
             </SidebarGroup>
           </SidebarContent>
-        </Sidebar>
-      )}
+        )}
 
-      {activeMain === "Settings" && (
-        <Sidebar
-          collapsible="none"
-          className="hidden bg-blue-20 md:flex-1 md:flex rounded-tl-md border-r"
-        >
+        {activeMain === "Settings" && (
           <SidebarContent className="flex flex-col">
             {/* Fixed Header */}
             <div className="text-lg pl-4 pt-4 gap-[6px] [&>svg]:w-5 [&>svg]:h-5 flex items-center  text-gray-800 font-semibold">
@@ -180,8 +163,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               ))}
             </div>
           </SidebarContent>
-        </Sidebar>
-      )}
+        )}
+      </Sidebar>
     </Sidebar>
   );
 }
